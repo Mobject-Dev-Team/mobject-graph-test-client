@@ -1,16 +1,10 @@
-const ads = require("ads-client");
 const { AdsRpcClient } = require("mobject-client");
 const fs = require("fs").promises;
 const path = require("path");
 const assert = require("assert");
 
 const directoryPath = path.join(__dirname, "./tests");
-const client = new ads.Client({
-  targetAmsNetId: "127.0.0.1.1.1",
-  targetAdsPort: 851,
-});
-
-const mobjectClient = new AdsRpcClient(client, "Main.server");
+const client = new AdsRpcClient("127.0.0.1.1.1", 851, "Main.server");
 
 // Function to read file content and parse JSON
 const readFileContent = async (filePath) => {
@@ -32,10 +26,7 @@ const compareObjects = (object1, object2) => {
 const processTestFiles = async (sendFilePath, replyFilePath) => {
   const sendData = await readFileContent(sendFilePath);
   const expectedReply = await readFileContent(replyFilePath);
-  const actualReply = await mobjectClient.rpcCall(
-    "LoadGraph",
-    sendData.payload
-  );
+  const actualReply = await client.rpcCall("LoadGraph", sendData.payload);
 
   if (compareObjects(actualReply, expectedReply)) {
     console.log(`Test passed for ${path.basename(sendFilePath)}`);
