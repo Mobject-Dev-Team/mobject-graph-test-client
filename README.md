@@ -7,6 +7,7 @@ This is a node.js test tool for testing implementations of mobject-graph. You cr
 Before running this project, make sure you have:
 
 - Node.js installed on your system.
+- mobject-graph TwinCAT project, with mobject-graph-test-project active and running.
 
 ## Installation
 
