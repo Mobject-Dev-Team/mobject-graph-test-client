@@ -1,20 +1,37 @@
 // loadGraph.test.js
 
 const { AdsRpcClient } = require("mobject-client");
+const ConsoleErrorToggler = require("../src/ConsoleErrorToggler");
+const consoleErrorToggler = new ConsoleErrorToggler();
 
 describe("LoadGraph RPC Call", () => {
   let client;
+  let connectionError = false;
 
   beforeAll(async () => {
+    consoleErrorToggler.disable();
     client = new AdsRpcClient("127.0.0.1.1.1", 851, "Main.server");
-    await client.connect();
+    try {
+      await client.connect();
+    } catch (error) {
+      connectionError = true;
+    } finally {
+      consoleErrorToggler.enable();
+    }
   });
 
   afterAll(async () => {
-    await client.disconnect();
+    if (!connectionError) {
+      await client.disconnect();
+    }
   });
 
   test("LoadGraph with valid nodes", async () => {
+    if (connectionError) {
+      throw new Error(
+        `Failed to connect to TwinCAT.  Please check that mobject-server is running.`
+      );
+    }
     const sendData = {
       graph: {
         nodes: [
