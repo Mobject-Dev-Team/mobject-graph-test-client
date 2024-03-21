@@ -1,10 +1,8 @@
-// loadGraph.test.js
-
 const { AdsRpcClient } = require("mobject-client");
 const ConsoleErrorToggler = require("../src/ConsoleErrorToggler");
 const consoleErrorToggler = new ConsoleErrorToggler();
 
-describe("Graph API Test - LoadGraph", () => {
+describe("Graph API Test - GetDatatypes", () => {
   let client;
   let connectionError = false;
 
@@ -26,36 +24,19 @@ describe("Graph API Test - LoadGraph", () => {
     }
   });
 
-  test("Check error is returned when given a malformed json, missing node order", async () => {
+  test("Check asking for content on a missing graph provides error", async () => {
     if (connectionError) {
       throw new Error(
         `Failed to connect to TwinCAT.  Please check that mobject-server is running.`
       );
     }
-    expect.assertions(1);
 
-    const sendData = {
-      graph: {
-        nodes: [
-          {
-            id: "2",
-            type: "PlcBasic.Display.Bool",
-            mode: 0,
-            inputs: [
-              {
-                name: "in",
-                type: "BOOL",
-              },
-            ],
-            title: "Display_BOOL",
-          },
-        ],
-        uuid: "8506b771-8bd4-4160-984e-e0e4aa529fec",
-      },
-    };
-
-    await expect(client.rpcCall("LoadGraph", sendData)).rejects.toThrow(
-      "Deserialization Failed, Missing Key : order"
-    );
+    await expect(
+      client.rpcCall("GetContentValue", {
+        graphUuid: "123",
+        nodeId: "1",
+        contentName: "test",
+      })
+    ).rejects.toThrow("Invalid Graph UUID");
   });
 });

@@ -1,10 +1,8 @@
-// loadGraph.test.js
-
 const { AdsRpcClient } = require("mobject-client");
 const ConsoleErrorToggler = require("../src/ConsoleErrorToggler");
 const consoleErrorToggler = new ConsoleErrorToggler();
 
-describe("LoadGraph RPC Call", () => {
+describe("Graph API Test - LoadGraph", () => {
   let client;
   let connectionError = false;
 
@@ -26,7 +24,7 @@ describe("LoadGraph RPC Call", () => {
     }
   });
 
-  test("LoadGraph with a missing node", async () => {
+  test("Check error is returned when given a malformed json, missing node id", async () => {
     if (connectionError) {
       throw new Error(
         `Failed to connect to TwinCAT.  Please check that mobject-server is running.`
@@ -39,7 +37,7 @@ describe("LoadGraph RPC Call", () => {
       graph: {
         nodes: [
           {
-            type: "PLC Basic/Display/BOOL",
+            type: "PlcBasic.Display.Bool",
             order: 1,
             mode: 0,
             inputs: [
