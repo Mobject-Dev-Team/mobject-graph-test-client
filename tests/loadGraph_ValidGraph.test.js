@@ -3,14 +3,15 @@
 const { AdsRpcClient } = require("mobject-client");
 const ConsoleErrorToggler = require("../src/ConsoleErrorToggler");
 const consoleErrorToggler = new ConsoleErrorToggler();
+require("dotenv").config();
 
-describe("Graph API Test - LoadGraph", () => {
+describe("Graph API Test - CreateGraph", () => {
   let client;
   let connectionError = false;
 
   beforeAll(async () => {
     consoleErrorToggler.disable();
-    client = new AdsRpcClient("127.0.0.1.1.1", 851, "Main.server");
+    client = new AdsRpcClient(process.env.NET_ID, 851, "Main.server");
     try {
       await client.connect();
     } catch (error) {
@@ -109,7 +110,7 @@ describe("Graph API Test - LoadGraph", () => {
       ],
     };
 
-    const actualReply = await client.rpcCall("LoadGraph", sendData);
+    const actualReply = await client.rpcCall("CreateGraph", sendData);
     expect(actualReply).toEqual(expectedReply);
   });
 });

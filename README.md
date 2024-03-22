@@ -21,6 +21,16 @@ Before running this project, make sure you have:
    npm install
    ```
 
+## Configuration
+
+Create a .env file in the root directory of the project and add your TwinCAT Net Id as follows:
+
+```
+NET_ID=127.0.0.1.1.1
+```
+
+Replace your_api_key_here with your actual OpenAI API key.
+
 ## Running the tests
 
 Run the tests using the following command:

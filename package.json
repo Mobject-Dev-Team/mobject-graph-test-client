@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "ads-client": "^1.14.3",
+    "dotenv": "^16.4.5",
     "mobject-client": "^1.0.0"
   }
 }
