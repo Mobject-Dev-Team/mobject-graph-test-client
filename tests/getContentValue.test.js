@@ -37,6 +37,6 @@ describe("Graph API Test - GetDatatypes", () => {
         nodeId: "1",
         contentName: "test",
       })
-    ).rejects.toThrow("Invalid Graph UUID");
+    ).rejects.toThrow("Invalid graphUuid");
   });
 });
