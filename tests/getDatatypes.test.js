@@ -82,7 +82,13 @@ describe("Graph API Test - GetDatatypes", () => {
             },
           },
         },
-
+        {
+          name: "FLOAT",
+          type: "ALIAS",
+          baseType: {
+            type: "LREAL",
+          },
+        },
         {
           name: "HRESULT",
           type: "ALIAS",
