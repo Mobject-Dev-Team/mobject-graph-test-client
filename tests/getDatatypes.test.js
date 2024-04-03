@@ -45,6 +45,7 @@ describe("Graph API Test - GetDatatypes", () => {
         { type: "LWORD" },
         { type: "REAL" },
         { type: "SINT" },
+        { type: "STRING" },
         { type: "TIME_OF_DAY" },
         { type: "TOD" },
         { type: "UDINT" },
