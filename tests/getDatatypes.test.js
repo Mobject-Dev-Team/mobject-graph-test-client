@@ -45,6 +45,7 @@ describe("Graph API Test - GetDatatypes", () => {
         { type: "LWORD" },
         { type: "REAL" },
         { type: "SINT" },
+        { type: "STRING" },
         { type: "TIME_OF_DAY" },
         { type: "TOD" },
         { type: "UDINT" },
@@ -82,7 +83,13 @@ describe("Graph API Test - GetDatatypes", () => {
             },
           },
         },
-
+        {
+          name: "FLOAT",
+          type: "ALIAS",
+          baseType: {
+            type: "LREAL",
+          },
+        },
         {
           name: "HRESULT",
           type: "ALIAS",
