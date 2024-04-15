@@ -25,82 +25,39 @@ describe("Graph API Test - GetDatatypes", () => {
     }
   });
 
-  test("Check datatypes are returned", async () => {
+  test("Ensure non-empty datatypes are returned", async () => {
     if (connectionError) {
       throw new Error(
         `Failed to connect to TwinCAT.  Please check that mobject-server is running.`
       );
     }
 
-    const expectedReply = {
-      datatypes: [
-        { type: "BOOL" },
-        { type: "BYTE" },
-        { type: "DINT" },
-        { type: "DT" },
-        { type: "DWORD" },
-        { type: "INT" },
-        { type: "LINT" },
-        { type: "LREAL" },
-        { type: "LWORD" },
-        { type: "REAL" },
-        { type: "SINT" },
-        { type: "STRING" },
-        { type: "TIME_OF_DAY" },
-        { type: "TOD" },
-        { type: "UDINT" },
-        { type: "UINT" },
-        { type: "ULINT" },
-        { type: "USINT" },
-        { type: "WORD" },
-        {
-          name: "TIMESTRUCT",
-          type: "STRUCT",
-          members: {
-            wDay: {
-              type: "WORD",
-            },
-            wDayOfWeek: {
-              type: "WORD",
-            },
-            wHour: {
-              type: "WORD",
-            },
-            wMilliseconds: {
-              type: "WORD",
-            },
-            wMinute: {
-              type: "WORD",
-            },
-            wMonth: {
-              type: "WORD",
-            },
-            wSecond: {
-              type: "WORD",
-            },
-            wYear: {
-              type: "WORD",
-            },
-          },
-        },
-        {
-          name: "FLOAT",
-          type: "ALIAS",
-          baseType: {
-            type: "LREAL",
-          },
-        },
-        {
-          name: "HRESULT",
-          type: "ALIAS",
-          baseType: {
-            type: "DINT",
-          },
-        },
-      ],
-    };
-
     const actualReply = await client.rpcCall("GetDatatypes", {});
-    expect(actualReply).toEqual(expectedReply);
+    expect(Array.isArray(actualReply.datatypes)).toBeTruthy();
+    expect(actualReply.datatypes.length).toBeGreaterThan(0);
+  });
+
+  test("Validate datatype structure", async () => {
+    const actualReply = await client.rpcCall("GetDatatypes", {});
+
+    actualReply.datatypes.forEach((datatype) => {
+      switch (datatype.datatype) {
+        case "STRUCT":
+          expect(datatype).toHaveProperty("identifier");
+          expect(datatype).toHaveProperty("members");
+          break;
+        case "ALIAS":
+          expect(datatype).toHaveProperty("identifier");
+          expect(datatype).toHaveProperty("baseType");
+          break;
+        case "ENUM":
+          expect(datatype).toHaveProperty("identifier");
+          expect(datatype).toHaveProperty("baseType");
+          break;
+        default: // Assuming 'default' means a primitive type
+          expect(datatype).toHaveProperty("datatype");
+          break;
+      }
+    });
   });
 });

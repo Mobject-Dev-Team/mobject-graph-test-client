@@ -38,7 +38,7 @@ describe("Graph API Test - CreateGraph", () => {
         nodes: [
           {
             id: "1",
-            type: "PlcBasic.Literals.Bool",
+            type: "PlcBasic.Bool.BoolLiteral",
             order: 0,
             mode: 0,
             outputs: [
@@ -70,10 +70,10 @@ describe("Graph API Test - CreateGraph", () => {
           order: 0,
           mode: 0,
           outputPorts: [
-            { name: "out", datatype: { type: "BOOL" }, value: false },
+            { name: "out", type: { datatype: "BOOL" }, value: false },
           ],
           parameters: [
-            { name: "value", datatype: { type: "BOOL" }, value: true },
+            { name: "value", type: { datatype: "BOOL" }, value: true },
           ],
           alarms: [{ message: "Deserialization failed", active: false }],
         },

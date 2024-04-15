@@ -40,7 +40,7 @@ describe("Graph API Test - CreateGraph", () => {
         nodes: [
           {
             id: "2",
-            type: "PlcBasic.Display.Bool",
+            type: "PlcBasic.Bool.BoolDisplay",
             mode: 0,
             inputs: [
               {

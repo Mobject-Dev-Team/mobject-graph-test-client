@@ -38,7 +38,7 @@ describe("Graph API Test - CreateGraph", () => {
         nodes: [
           {
             id: "2",
-            type: "PlcBasic.Display.Bool",
+            type: "PlcBasic.Bool.BoolDisplay",
             order: 1,
             mode: 0,
             inputs: [
@@ -51,7 +51,7 @@ describe("Graph API Test - CreateGraph", () => {
           },
           {
             id: "1",
-            type: "PlcBasic.Literals.Bool",
+            type: "PlcBasic.Bool.BoolLiteral",
             order: 0,
             mode: 0,
             outputs: [
@@ -83,10 +83,10 @@ describe("Graph API Test - CreateGraph", () => {
           order: 0,
           mode: 0,
           outputPorts: [
-            { name: "out", datatype: { type: "BOOL" }, value: false },
+            { name: "out", type: { datatype: "BOOL" }, value: false },
           ],
           parameters: [
-            { name: "value", datatype: { type: "BOOL" }, value: true },
+            { name: "value", type: { datatype: "BOOL" }, value: true },
           ],
           alarms: [{ message: "Deserialization failed", active: false }],
         },
@@ -98,12 +98,12 @@ describe("Graph API Test - CreateGraph", () => {
             {
               name: "in",
               connected: true,
-              datatype: { type: "BOOL" },
+              type: { datatype: "BOOL" },
               value: false,
             },
           ],
           contents: [
-            { name: "display", datatype: { type: "BOOL" }, value: false },
+            { name: "display", type: { datatype: "BOOL" }, value: false },
           ],
           alarms: [{ message: "Deserialization failed", active: false }],
         },
