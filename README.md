@@ -44,3 +44,11 @@ If you are authoring tests and want the tests to restart on change then you can 
 ```
 npm run test:watch
 ```
+
+## Playground
+
+There are a few inbuilt playground options which allow you to see what is returned from the server. To run the the playground type the following command:
+
+```
+npm start
+```
