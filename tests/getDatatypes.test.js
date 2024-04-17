@@ -48,14 +48,14 @@ describe("Graph API Test - GetDatatypes", () => {
           break;
         case "ALIAS":
           expect(datatype).toHaveProperty("identifier");
-          expect(datatype).toHaveProperty("baseType");
+          expect(datatype).toHaveProperty("baseDatatype");
           break;
         case "ENUM":
           expect(datatype).toHaveProperty("identifier");
-          expect(datatype).toHaveProperty("baseType");
+          expect(datatype).toHaveProperty("baseDatatype");
           break;
         default: // Assuming 'default' means a primitive type
-          expect(datatype).toHaveProperty("datatype");
+          expect(datatype).toHaveProperty("name");
           break;
       }
     });
