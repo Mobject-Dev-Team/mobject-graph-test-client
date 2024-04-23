@@ -83,10 +83,10 @@ describe("Graph API Test - CreateGraph", () => {
           order: 0,
           mode: 0,
           outputPorts: [
-            { name: "out", datatype: { name: "BOOL" }, value: false },
+            { name: "out", datatype: { typeName: "BOOL" }, value: false },
           ],
           parameters: [
-            { name: "value", datatype: { name: "BOOL" }, value: true },
+            { name: "value", datatype: { typeName: "BOOL" }, value: true },
           ],
           alarms: [{ message: "Deserialization failed", active: false }],
         },
@@ -98,12 +98,12 @@ describe("Graph API Test - CreateGraph", () => {
             {
               name: "in",
               connected: true,
-              datatype: { name: "BOOL" },
+              datatype: { typeName: "BOOL" },
               value: false,
             },
           ],
           contents: [
-            { name: "display", datatype: { name: "BOOL" }, value: false },
+            { name: "display", datatype: { typeName: "BOOL" }, value: false },
           ],
           alarms: [{ message: "Deserialization failed", active: false }],
         },

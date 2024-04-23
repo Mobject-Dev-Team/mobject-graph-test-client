@@ -55,7 +55,7 @@ describe("Graph API Test - GetDatatypes", () => {
           expect(datatype).toHaveProperty("baseDatatype");
           break;
         default: // Assuming 'default' means a primitive type
-          expect(datatype).toHaveProperty("name");
+          expect(datatype).toHaveProperty("typeName");
           break;
       }
     });

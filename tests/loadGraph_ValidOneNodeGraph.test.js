@@ -70,10 +70,10 @@ describe("Graph API Test - CreateGraph", () => {
           order: 0,
           mode: 0,
           outputPorts: [
-            { name: "out", datatype: { name: "BOOL" }, value: false },
+            { name: "out", datatype: { typeName: "BOOL" }, value: false },
           ],
           parameters: [
-            { name: "value", datatype: { name: "BOOL" }, value: true },
+            { name: "value", datatype: { typeName: "BOOL" }, value: true },
           ],
           alarms: [{ message: "Deserialization failed", active: false }],
         },
