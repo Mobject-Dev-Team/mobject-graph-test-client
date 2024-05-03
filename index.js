@@ -7,21 +7,6 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-async function callGetDatatypes() {
-  const client = new AdsRpcClient(process.env.NET_ID, 851, "Main.server");
-
-  try {
-    await client.connect();
-    const sendData = {};
-    const response = await client.rpcCall("GetDatatypes", sendData);
-    console.log(JSON.stringify(response, null, 2));
-  } catch (error) {
-    console.error("An error occurred during the API call:", error.message);
-  } finally {
-    await client.disconnect();
-  }
-}
-
 async function callGetBlueprints() {
   const client = new AdsRpcClient(process.env.NET_ID, 851, "Main.server");
 
@@ -105,7 +90,6 @@ async function callGetStatus() {
 
 function displayOptionsAndAsk() {
   console.log("Please select an API function to call:");
-  console.log("0: Get Datatypes");
   console.log("1: Get Blueprints");
   console.log("2: Create Basic Graph");
   console.log("3: Get Status");
@@ -113,11 +97,6 @@ function displayOptionsAndAsk() {
 
   rl.question("Enter your choice (or 'x' to exit): ", function (answer) {
     switch (answer) {
-      case "0":
-        callGetDatatypes().then(() => {
-          displayOptionsAndAsk();
-        });
-        break;
       case "1":
         callGetBlueprints().then(() => {
           displayOptionsAndAsk();
