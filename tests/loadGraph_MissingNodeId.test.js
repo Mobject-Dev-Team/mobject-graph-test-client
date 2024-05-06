@@ -38,7 +38,7 @@ describe("Graph API Test - CreateGraph", () => {
       graph: {
         nodes: [
           {
-            type: "PlcBasic.Bool.BoolDisplay",
+            type: "Display/BOOL",
             order: 1,
             mode: 0,
             inputs: [
@@ -47,7 +47,7 @@ describe("Graph API Test - CreateGraph", () => {
                 type: "BOOL",
               },
             ],
-            title: "Display_BOOL",
+            title: "BOOL",
           },
         ],
         uuid: "8506b771-8bd4-4160-984e-e0e4aa529fec",

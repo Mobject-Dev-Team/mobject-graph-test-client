@@ -40,7 +40,7 @@ describe("Graph API Test - CreateGraph", () => {
         nodes: [
           {
             id: "2",
-            type: "Unknown.Node.Type",
+            type: "Unknown/Node",
             order: 1,
             mode: 0,
             inputs: [
@@ -49,7 +49,7 @@ describe("Graph API Test - CreateGraph", () => {
                 type: "BOOL",
               },
             ],
-            title: "Display_BOOL",
+            title: "BOOL",
           },
         ],
         uuid: "8506b771-8bd4-4160-984e-e0e4aa529fec",
@@ -57,7 +57,7 @@ describe("Graph API Test - CreateGraph", () => {
     };
 
     await expect(client.rpcCall("CreateGraph", sendData)).rejects.toThrow(
-      "Deserialization Failed, Missing Node Prototype : Unknown.Node.Type"
+      "Deserialization Failed, Missing Node Prototype : Unknown/Node"
     );
   });
 });

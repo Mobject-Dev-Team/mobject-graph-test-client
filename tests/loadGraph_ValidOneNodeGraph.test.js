@@ -38,7 +38,7 @@ describe("Graph API Test - CreateGraph", () => {
         nodes: [
           {
             id: "1",
-            type: "PlcBasic.Bool.BoolLiteral",
+            type: "Literal/BOOL",
             order: 0,
             mode: 0,
             outputs: [
@@ -47,7 +47,7 @@ describe("Graph API Test - CreateGraph", () => {
                 type: "BOOL",
               },
             ],
-            title: "Literal_BOOL",
+            title: "BOOL",
             properties: {
               value: true,
             },

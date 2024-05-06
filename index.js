@@ -32,7 +32,7 @@ async function callCreateBasicGraph() {
         nodes: [
           {
             id: "2",
-            type: "PlcBasic.Bool.BoolDisplay",
+            type: "Display/BOOL",
             order: 1,
             mode: 0,
             inputs: [
@@ -41,11 +41,11 @@ async function callCreateBasicGraph() {
                 type: "BOOL",
               },
             ],
-            title: "Display_BOOL",
+            title: "BOOL",
           },
           {
             id: "1",
-            type: "PlcBasic.Bool.BoolLiteral",
+            type: "Literal/BOOL",
             order: 0,
             mode: 0,
             outputs: [
@@ -54,7 +54,7 @@ async function callCreateBasicGraph() {
                 type: "BOOL",
               },
             ],
-            title: "Literal_BOOL",
+            title: "BOOL",
             properties: {
               value: true,
             },
