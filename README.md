@@ -52,3 +52,7 @@ There are a few inbuilt playground options which allow you to see what is return
 ```
 npm start
 ```
+
+## Versions
+
+Requires mobject-graph v0.5.0
